@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bcwheeler.dev | Brandon C. Wheeler</title>
+  <meta name="description" content="Brandon C. Wheeler | Junior System Administrator portfolio website." />
+  <style>
+    :root {
+      --purple: #461d7c;
+      --purple-dark: #2f1454;
+      --gold: #fdd023;
+      --gold-soft: #fff7d6;
+      --bg: #f7f4fb;
+      --text: #222;
+      --muted: #666;
+      --white: #fff;
+      --border: #e7def2;
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--purple);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 92%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+      color: var(--white);
+      padding: 24px 0 70px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      margin-left: 18px;
+      font-weight: bold;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      align-items: center;
+      margin-top: 36px;
+    }
+
+    .hero img {
+      width: 100%;
+      border-radius: 16px;
+      border: 4px solid rgba(253, 208, 35, 0.5);
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 2.6rem;
+      line-height: 1.1;
+    }
+
+    .hero h2 {
+      margin: 0 0 16px;
+      color: var(--gold);
+      font-size: 1.15rem;
+      font-weight: bold;
+    }
+
+    .hero p {
+      margin: 0 0 14px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .button-row {
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--gold);
+      color: #2b2100;
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-weight: bold;
+      margin-right: 12px;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+
+    main {
+      margin-top: -40px;
+    }
+
+    section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 22px;
+    }
+
+    h3 {
+      margin-top: 0;
+      color: var(--purple-dark);
+      font-size: 1.6rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      background: #fff;
+    }
+
+    .card h4 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--purple-dark);
+      font-size: 1.1rem;
+    }
+
+    .tags {
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--gold-soft);
+      border: 1px solid #f0d97c;
+      color: var(--purple-dark);
+      padding: 7px 11px;
+      border-radius: 999px;
+      margin: 0 8px 8px 0;
+      font-size: 0.92rem;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px 0 40px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 850px) {
+      .hero,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links a {
+        margin: 0 14px 0 0;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">bcwheeler.dev</div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div>
+          <img src="brandon_wheeler_pic.png" alt="Photo of Brandon C. Wheeler" />
+        </div>
+
+        <div>
+          <h1>Brandon C. Wheeler</h1>
+          <h2>Junior System Administrator</h2>
+          <p>
+            I provide systems administration, infrastructure support, troubleshooting,
+            and technical operations support in higher education and research environments.
+          </p>
+          <p>
+            My background includes Linux and Windows systems, virtualization, backups,
+            storage, documentation, and end-user support.  [oai_citation:2‡bwheeler2_resume (1).PDF](sediment://file_00000000c2e8720c83a76e7d0579a295)
+          </p>
+          <div class="button-row">
+            <a class="button" href="#projects">View Projects</a>
+            <a class="button secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="about">
+      <h3>About Me</h3>
+      <p>
+        I am a Junior System Administrator supporting technical operations, systems,
+        and services for LSU CCT. My work includes server support, patching, backups,
+        documentation, research support, and day-to-day troubleshooting for users and systems.  [oai_citation:3‡bwheeler2_resume (1).PDF](sediment://file_00000000c2e8720c83a76e7d0579a295)  [oai_citation:4‡Wheeler, Brandon C  Unclassified Annual Evaluation  04_23_2026.pdf](sediment://file_00000000956c722f94cc28969aadc996)
+      </p>
+      <p>
+        I enjoy building reliable solutions, solving technical problems, and creating
+        documentation that helps teams work more efficiently.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h3>Selected Work</h3>
+      <div class="cards">
+        <div class="card">
+          <h4>Systems Administration</h4>
+          <p>
+            Support for servers, desktops, laptops, clusters, and operational systems
+            across Linux, Windows, and Mac environments.  [oai_citation:5‡bwheeler2_resume (1).PDF](sediment://file_00000000c2e8720c83a76e7d0579a295)
+          </p>
+        </div>
+
+        <div class="card">
+          <h4>Virtualization & Backups</h4>
+          <p>
+            Experience supporting virtual environments, backup monitoring, and recovery-focused operations.  [oai_citation:6‡bwheeler2_resume (1).PDF](sediment://file_00000000c2e8720c83a76e7d0579a295)
+          </p>
+        </div>
+
+        <div class="card">
+          <h4>Documentation & Process Improvement</h4>
+          <p>
+            Create runbooks, procedures, and technical documentation to improve support consistency and efficiency.  [oai_citation:7‡Wheeler, Brandon C  Unclassified Annual Evaluation  04_23_2026.pdf](sediment://file_00000000956c722f94cc28969aadc996)
+          </p>
+        </div>
+
+        <div class="card">
+          <h4>Research & User Support</h4>
+          <p>
+            Provide technical support for faculty, researchers, students, and specialized university environments.  [oai_citation:8‡bwheeler2_resume (1).PDF](sediment://file_00000000c2e8720c83a76e7d0579a295)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h3>Skills</h3>
+      <div class="tags">
+        <span class="tag">Linux</span>
+        <span class="tag">Windows Server</span>
+        <span class="tag">Active Directory</span>
+        <span class="tag">Hyper-V</span>
+        <span class="tag">VMware</span>
+        <span class="tag">Backups</span>
+        <span class="tag">Storage</span>
+        <span class="tag">Bash</span>
+        <span class="tag">Python</span>
+        <span class="tag">Ansible</span>
+        <span class="tag">PowerShell</span>
+        <span class="tag">Documentation</span>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h3>Contact</h3>
+      <p><strong>Email:</strong> <a href="mailto:branwheeler85@gmail.com">branwheeler85@gmail.com</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/brandon-wheeler-b340a6273/" target="_blank" rel="noopener noreferrer">linkedin.com/in/brandon-wheeler-b340a6273</a></p>
+      <p><strong>Website:</strong> bcwheeler.dev</p>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Brandon C. Wheeler | bcwheeler.dev
+  </footer>
+
+</body>
+</html>
