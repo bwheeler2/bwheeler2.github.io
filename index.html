@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>bcwheeler.dev | Brandon C. Wheeler</title>
-  <meta name="description" content="Brandon C. Wheeler | Junior System Administrator portfolio website." />
+  <meta
+    name="description"
+    content="Brandon C. Wheeler | Junior System Administrator portfolio website."
+  />
   <style>
     :root {
       --purple: #461d7c;
@@ -104,7 +107,7 @@
 
     .hero p {
       margin: 0 0 14px;
-      color: rgba(255,255,255,0.92);
+      color: rgba(255, 255, 255, 0.92);
     }
 
     .button-row {
@@ -124,68 +127,93 @@
     .button.secondary {
       background: transparent;
       color: var(--white);
-      border: 1px solid rgba(255,255,255,0.35);
+      border: 1px solid rgba(255, 255, 255, 0.7);
     }
 
     main {
-      margin-top: -40px;
+      padding: 32px 0 40px;
     }
 
     section {
+      margin-bottom: 40px;
       background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      margin-bottom: 22px;
     }
 
-    h3 {
+    section h3 {
       margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.4rem;
       color: var(--purple-dark);
-      font-size: 1.6rem;
+    }
+
+    section p {
+      margin: 0 0 12px;
+      color: var(--muted);
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 10px;
     }
 
     .card {
+      background: #faf8ff;
+      border-radius: 10px;
+      padding: 16px 16px 14px;
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
-      background: #fff;
     }
 
     .card h4 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: var(--purple-dark);
-      font-size: 1.1rem;
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      color: var(--purple);
+    }
+
+    .card p {
+      margin: 0 0 6px;
+      color: var(--muted);
+    }
+
+    .card ul {
+      padding-left: 20px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .card li {
+      margin-bottom: 4px;
     }
 
     .tags {
-      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
     }
 
     .tag {
       display: inline-block;
-      background: var(--gold-soft);
-      border: 1px solid #f0d97c;
-      color: var(--purple-dark);
-      padding: 7px 11px;
+      padding: 5px 10px;
       border-radius: 999px;
-      margin: 0 8px 8px 0;
-      font-size: 0.92rem;
-      font-weight: bold;
+      background: var(--gold-soft);
+      color: #4a3a00;
+      font-size: 0.9rem;
+      border: 1px solid rgba(253, 208, 35, 0.5);
     }
 
     footer {
       text-align: center;
+      padding: 16px 0 20px;
+      font-size: 0.9rem;
       color: var(--muted);
-      padding: 24px 0 40px;
-      font-size: 0.95rem;
+      border-top: 1px solid var(--border);
+      background: #f1ecfb;
     }
 
     @media (max-width: 850px) {
@@ -201,41 +229,53 @@
       .hero h1 {
         font-size: 2rem;
       }
+
+      section {
+        padding: 18px 16px;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
     <div class="container">
       <nav>
         <div class="logo">bcwheeler.dev</div>
         <div class="nav-links">
           <a href="#about">About</a>
+          <a href="#projects">Selected Work</a>
           <a href="#skills">Skills</a>
+          <a href="#certifications">Certifications</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
 
       <div class="hero">
         <div>
-          <img src="brandon_wheeler_pic.png" alt="Photo of Brandon C. Wheeler" />
+          <img
+            src="brandon_wheeler_pic.png"
+            alt="Photo of Brandon C. Wheeler"
+          />
         </div>
-
         <div>
           <h1>Brandon C. Wheeler</h1>
           <h2>Junior System Administrator</h2>
           <p>
-            I provide systems administration, infrastructure support, troubleshooting,
-            and technical operations support in higher education and research environments.
+            I provide systems administration, infrastructure support,
+            troubleshooting, and technical operations support in higher education
+            and research environments.
           </p>
           <p>
-            My background includes Linux and Windows systems, virtualization, backups,
-            storage, documentation, and end-user support.
+            My background includes Linux and Windows systems, virtualization,
+            backups, storage, documentation, and end-user support.
           </p>
-         <div class="button-row">
-        <a class="button secondary" href="#contact">Contact Me</a>
-        </div>
+          <p>
+            Based in Baton Rouge, LA. Focused on junior–mid systems
+            administration and infrastructure roles in higher education, research
+            computing, and enterprise IT.
+          </p>
+          <div class="button-row">
+            <a class="button secondary" href="#contact">Contact Me</a>
           </div>
         </div>
       </div>
@@ -243,17 +283,17 @@
   </header>
 
   <main class="container">
-
     <section id="about">
       <h3>About Me</h3>
       <p>
-        I am a Junior System Administrator supporting technical operations, systems,
-        and services for LSU CCT and ORED. My work includes server support, patching, backups,
-        documentation, research support, and day-to-day troubleshooting for users and systems.
+        I am a Junior System Administrator based in Baton Rouge, LA, supporting
+        technical operations, systems, and services for LSU CCT and ORED. My
+        work includes server support, patching, backups, documentation, research
+        support, and day-to-day troubleshooting for users and systems.
       </p>
       <p>
-        I enjoy building reliable solutions, solving technical problems, and creating
-        documentation that helps teams work more efficiently.
+        I enjoy building reliable solutions, solving technical problems, and
+        creating documentation that helps teams work more efficiently.
       </p>
     </section>
 
@@ -261,38 +301,66 @@
       <h3>Selected Work</h3>
       <div class="cards">
         <div class="card">
-          <h4>Systems Administration</h4>
-          <p>
-            Support for servers, desktops, laptops, clusters, and operational systems
-            across Linux, Windows, and Mac environments.
-          </p>
+          <h4>Infrastructure & Systems Administration</h4>
+          <ul>
+            <li>
+              Administer Linux (RHEL) and Windows Server hosts for research and
+              administrative workloads at LSU CCT/ORED.
+            </li>
+            <li>
+              Handle patching, monitoring, and troubleshooting for physical and
+              virtual servers, desktops, and laptops.
+            </li>
+          </ul>
         </div>
 
         <div class="card">
-          <h4>Virtualization & Backups</h4>
-          <p>
-            Experience supporting virtual environments, backup monitoring, and recovery-focused operations.
-          </p>
+          <h4>Virtualization & Backup Operations</h4>
+          <ul>
+            <li>
+              Support Hyper-V and VMware environments, including provisioning,
+              lifecycle operations, and performance troubleshooting.
+            </li>
+            <li>
+              Work on projects such as SCVMM database migrations to new SQL
+              Server instances and backup monitoring for critical systems.
+            </li>
+          </ul>
         </div>
 
         <div class="card">
           <h4>Documentation & Process Improvement</h4>
-          <p>
-            Create runbooks, procedures, and technical documentation to improve support consistency and efficiency.
-          </p>
+          <ul>
+            <li>
+              Create runbooks and procedures for recurring tasks such as
+              patching, backup checks, and common incident response.
+            </li>
+            <li>
+              Contribute to improvements around tools like Request Tracker by
+              documenting workflows and upgrade steps.
+            </li>
+          </ul>
         </div>
 
         <div class="card">
           <h4>Research & User Support</h4>
-          <p>
-            Provide technical support for faculty, researchers, students, and specialized university environments.
-          </p>
+          <ul>
+            <li>
+              Provide technical support for faculty, researchers, and students
+              using specialized systems, clusters, and applications.
+            </li>
+            <li>
+              Help users with access, environment setup, and troubleshooting so
+              they can focus on their research and teaching.
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section id="skills">
       <h3>Skills</h3>
+      <p>Technologies and areas I work with regularly:</p>
       <div class="tags">
         <span class="tag">Linux</span>
         <span class="tag">Windows Server</span>
@@ -309,18 +377,39 @@
       </div>
     </section>
 
-    <section id="contact">
-      <h3>Contact</h3>
-      <p><strong>Email:</strong> <a href="mailto:branwheeler85@gmail.com">branwheeler85@gmail.com</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/brandon-wheeler-b340a6273/" target="_blank" rel="noopener noreferrer">linkedin.com/in/brandon-wheeler-b340a6273</a></p>
-      <p><strong>Website:</strong> bcwheeler.dev</p>
+    <section id="certifications">
+      <h3>Certifications & Training</h3>
+      <ul>
+        <li>Preparing for Red Hat Certified System Administrator (RHCSA)</li>
+        <!-- Add more items as you complete them -->
+      </ul>
     </section>
 
+    <section id="contact">
+      <h3>Contact</h3>
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:branwheeler85@gmail.com">branwheeler85@gmail.com</a>
+      </p>
+      <p>
+        <strong>LinkedIn:</strong>
+        <a
+          href="https://www.linkedin.com/in/brandon-wheeler-b340a6273/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          linkedin.com/in/brandon-wheeler-b340a6273
+        </a>
+      </p>
+      <p>
+        <strong>Website:</strong>
+        <a href="https://bcwheeler.dev">bcwheeler.dev</a>
+      </p>
+    </section>
   </main>
 
   <footer>
-    © 2026 Brandon C. Wheeler | bcwheeler.dev
+    © 2026 Brandon C. Wheeler | bcwheeler.dev — Systems Administration & Infrastructure Support
   </footer>
-
 </body>
 </html>
