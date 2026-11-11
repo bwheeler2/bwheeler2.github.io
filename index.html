@@ -3,49 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bcwheeler.dev | Brandon C. Wheeler</title>
+  <title>Brandon C. Wheeler | Systems Administration &amp; Infrastructure Support</title>
   <meta
     name="description"
-    content="Brandon C. Wheeler | Junior System Administrator portfolio website."
+    content="Brandon C. Wheeler is a system administrator at LSU's Center for Computation & Technology with 12+ years of IT experience across Linux and Windows servers, virtualization, backup and storage, and desktop support."
   />
+  <meta name="author" content="Brandon C. Wheeler" />
+  <link rel="canonical" href="https://bcwheeler.dev/" />
+
+  <!-- Social sharing previews -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bcwheeler.dev/" />
+  <meta property="og:title" content="Brandon C. Wheeler | Systems Administration & Infrastructure Support" />
+  <meta property="og:description" content="Linux and Windows servers, virtualization, backup and storage, and end-user support for research and higher education environments." />
+  <meta property="og:image" content="https://bcwheeler.dev/brandon_wheeler_pic.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Brandon C. Wheeler",
+    "url": "https://bcwheeler.dev",
+    "image": "https://bcwheeler.dev/brandon_wheeler_pic.png",
+    "jobTitle": "Junior System Administrator",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Louisiana State University, Center for Computation & Technology"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Baton Rouge",
+      "addressRegion": "LA"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/brandon-wheeler-b340a6273/",
+      "https://github.com/bwheeler2"
+    ],
+    "knowsAbout": [
+      "Linux system administration", "Red Hat Enterprise Linux", "Windows Server",
+      "Red Hat Identity Management (IdM)", "Active Directory", "SSSD", "Hyper-V", "VMware vSphere",
+      "Backup and disaster recovery", "Enterprise storage", "Desktop support"
+    ]
+  }
+  </script>
+
   <style>
     :root {
       --purple: #461d7c;
       --purple-dark: #2f1454;
+      --purple-ink: #24103f;
       --gold: #fdd023;
       --gold-soft: #fff7d6;
+      --gold-ink: #4a3a00;
       --bg: #f7f4fb;
       --text: #222;
-      --muted: #666;
+      --muted: #5d5d66;
       --white: #fff;
       --border: #e7def2;
+      --card: #faf8ff;
       --max-width: 1100px;
+      --radius: 12px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
 
-    a {
-      color: var(--purple);
-      text-decoration: none;
+    a { color: var(--purple); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+      border-radius: 4px;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      background: var(--gold);
+      color: var(--gold-ink);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      z-index: 100;
     }
+    .skip-link:focus { left: 8px; }
 
     .container {
       width: 92%;
@@ -53,10 +106,14 @@
       margin: 0 auto;
     }
 
-    header {
-      background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+    /* ---------- Sticky top bar ---------- */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--purple-dark);
       color: var(--white);
-      padding: 24px 0 70px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     nav {
@@ -64,352 +121,823 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 8px 16px;
+      padding: 14px 0;
     }
 
-    .logo {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
+    .logo { font-size: 1.15rem; font-weight: bold; color: var(--white); }
+    .logo span { color: var(--gold); }
+
+    .nav-links { display: flex; flex-wrap: wrap; gap: 4px 18px; }
 
     .nav-links a {
-      color: var(--white);
-      margin-left: 18px;
+      color: rgba(255, 255, 255, 0.85);
       font-weight: bold;
+      font-size: 0.95rem;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--white);
+      text-decoration: none;
+      border-bottom-color: var(--gold);
+    }
+
+    /* ---------- Hero ---------- */
+    header {
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+      color: var(--white);
+      padding: 40px 0 56px;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 32px;
+      grid-template-columns: 260px 1fr;
+      gap: 36px;
       align-items: center;
-      margin-top: 36px;
     }
 
     .hero img {
       width: 100%;
       border-radius: 16px;
       border: 4px solid rgba(253, 208, 35, 0.5);
+      display: block;
     }
 
-    .hero h1 {
+    .eyebrow {
       margin: 0 0 10px;
-      font-size: 2.6rem;
-      line-height: 1.1;
-    }
-
-    .hero h2 {
-      margin: 0 0 16px;
       color: var(--gold);
-      font-size: 1.15rem;
+      font-size: 0.85rem;
       font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .hero p {
-      margin: 0 0 14px;
-      color: rgba(255, 255, 255, 0.92);
+    .hero h1 { margin: 0 0 6px; font-size: 2.7rem; line-height: 1.1; }
+
+    .hero .title {
+      margin: 0 0 18px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.05rem;
     }
 
-    .button-row {
-      margin-top: 20px;
+    .hero .lead {
+      margin: 0 0 12px;
+      font-size: 1.15rem;
+      color: var(--white);
     }
+
+    .hero p { margin: 0 0 12px; color: rgba(255, 255, 255, 0.9); }
+
+    .button-row { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
 
     .button {
       display: inline-block;
       background: var(--gold);
       color: #2b2100;
-      padding: 11px 18px;
+      padding: 11px 20px;
       border-radius: 999px;
       font-weight: bold;
-      margin-right: 12px;
     }
+    .button:hover { text-decoration: none; filter: brightness(1.05); }
 
     .button.secondary {
       background: transparent;
       color: var(--white);
       border: 1px solid rgba(255, 255, 255, 0.7);
     }
+    .button.secondary:hover { background: rgba(255, 255, 255, 0.1); }
 
-    main {
-      padding: 32px 0 40px;
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      margin-top: 44px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 24px;
     }
 
+    .stat { padding: 0 18px; border-left: 1px solid rgba(255, 255, 255, 0.2); }
+    .stat:first-child { padding-left: 0; border-left: 0; }
+    .stat strong { display: block; font-size: 1.5rem; color: var(--gold); line-height: 1.2; }
+    .stat span { font-size: 0.92rem; color: rgba(255, 255, 255, 0.85); }
+
+    /* ---------- Sections ---------- */
+    main { padding: 36px 0 40px; }
+
     section {
-      margin-bottom: 40px;
+      margin-bottom: 32px;
       background: var(--white);
-      border-radius: 12px;
-      padding: 24px;
+      border-radius: var(--radius);
+      padding: 28px;
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
       border: 1px solid var(--border);
     }
 
-    section h3 {
-      margin-top: 0;
-      margin-bottom: 12px;
-      font-size: 1.4rem;
+    .section-head { margin-bottom: 18px; }
+
+    section h2 {
+      margin: 0 0 6px;
+      font-size: 1.5rem;
       color: var(--purple-dark);
     }
 
-    section p {
-      margin: 0 0 12px;
-      color: var(--muted);
-    }
+    .section-head p { margin: 0; color: var(--muted); }
+
+    section p { margin: 0 0 12px; color: var(--muted); }
+
+    h3 { margin: 0 0 8px; font-size: 1.08rem; color: var(--purple); }
 
     .cards {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
-      margin-top: 10px;
     }
 
+    .cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
     .card {
-      background: #faf8ff;
+      background: var(--card);
+      color: var(--text);
       border-radius: 10px;
-      padding: 16px 16px 14px;
+      padding: 18px;
       border: 1px solid var(--border);
     }
 
-    .card h4 {
-      margin: 0 0 8px;
-      font-size: 1.05rem;
+    .card p { margin: 0 0 8px; color: var(--muted); }
+
+    .card ul { padding-left: 20px; margin: 0; color: var(--muted); }
+    .card li { margin-bottom: 5px; }
+
+    /* ---------- About ---------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .focus-list { list-style: none; padding: 0; margin: 0; }
+    .focus-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .focus-list li:last-child { border-bottom: 0; }
+    .focus-list strong { color: var(--purple-dark); }
+
+    /* ---------- Career timeline ---------- */
+    .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline li { position: relative; padding: 0 0 22px 34px; }
+    .timeline li:last-child { padding-bottom: 0; }
+
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 3px solid var(--purple);
+    }
+
+    .timeline li.current::before { background: var(--gold); border-color: var(--purple); }
+
+    .timeline .when {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: bold;
       color: var(--purple);
+      letter-spacing: 0.03em;
     }
+    .timeline .role { display: block; font-weight: bold; color: var(--text); font-size: 1.05rem; }
+    .timeline .org { display: block; color: var(--muted); font-size: 0.95rem; margin-bottom: 4px; }
+    .timeline p { margin: 0; }
 
-    .card p {
-      margin: 0 0 6px;
-      color: var(--muted);
-    }
-
-    .card ul {
-      padding-left: 20px;
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .card li {
+    /* ---------- Experience ---------- */
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px 16px;
       margin-bottom: 4px;
     }
+    .job-head h3 { font-size: 1.2rem; color: var(--purple-dark); margin: 0; }
+    .job-dates { font-weight: bold; color: var(--purple); font-size: 0.95rem; }
+    .job-org { color: var(--muted); margin: 0 0 18px; }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
+    .earlier { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .earlier h3 { color: var(--purple-dark); }
+    .earlier-item { margin-bottom: 12px; }
+    .earlier-item strong { color: var(--text); }
+    .earlier-item .job-dates { font-size: 0.9rem; margin-left: 6px; }
+    .earlier-item p { margin: 2px 0 0; }
+
+    /* ---------- Projects ---------- */
+    .project { display: flex; flex-direction: column; }
+    .project dl { margin: 0 0 12px; }
+    .project dt {
+      font-size: 0.78rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--purple);
+      margin-top: 10px;
     }
+    .project dd { margin: 2px 0 0; color: var(--muted); }
+    .project .tags { margin-top: auto; padding-top: 6px; }
+
+    /* ---------- Approach ---------- */
+    .approach .card h3::before {
+      content: attr(data-step);
+      display: inline-block;
+      min-width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      border-radius: 50%;
+      background: var(--purple);
+      color: var(--white);
+      font-size: 0.85rem;
+      margin-right: 10px;
+    }
+
+    /* ---------- Skills ---------- */
+    .skill-groups {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px 26px;
+    }
+    .skill-groups h3 { font-size: 1rem; color: var(--purple-dark); }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 
     .tag {
       display: inline-block;
-      padding: 5px 10px;
+      padding: 4px 10px;
       border-radius: 999px;
       background: var(--gold-soft);
-      color: #4a3a00;
-      font-size: 0.9rem;
+      color: var(--gold-ink);
+      font-size: 0.86rem;
       border: 1px solid rgba(253, 208, 35, 0.5);
     }
 
+    /* ---------- Education ---------- */
+    .edu-list { list-style: none; padding: 0; margin: 0; }
+    .edu-list li { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .edu-list li:last-child { border-bottom: 0; }
+    .edu-list strong { display: block; color: var(--text); }
+    .edu-list span { color: var(--muted); font-size: 0.95rem; }
+
+    .status {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 1px 9px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: bold;
+      background: var(--purple);
+      color: var(--white);
+      vertical-align: middle;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact-section {
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+      color: var(--white);
+      border: 0;
+    }
+    .contact-section h2 { color: var(--white); }
+    .contact-section p { color: rgba(255, 255, 255, 0.88); }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+
     footer {
       text-align: center;
-      padding: 16px 0 20px;
+      padding: 18px 0 22px;
       font-size: 0.9rem;
       color: var(--muted);
       border-top: 1px solid var(--border);
       background: #f1ecfb;
     }
 
-    @media (max-width: 850px) {
-      .hero,
-      .cards {
-        grid-template-columns: 1fr;
-      }
+    /* ---------- Responsive ---------- */
+    @media screen and (max-width: 900px) {
+      .cards.three, .skill-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .about-grid { grid-template-columns: 1fr; }
+    }
 
-      .nav-links a {
-        margin: 0 14px 0 0;
-      }
+    @media screen and (max-width: 760px) {
+      .hero, .cards, .cards.three, .skill-groups { grid-template-columns: 1fr; }
+      .hero img { max-width: 220px; }
+      .hero h1 { font-size: 2.1rem; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 0; }
+      .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+      section { padding: 20px 16px; }
+      .nav-links { gap: 4px 14px; }
+      .nav-links a { font-size: 0.9rem; }
+    }
 
-      .hero h1 {
-        font-size: 2rem;
-      }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
 
-      section {
-        padding: 18px 16px;
-      }
+    @media print {
+      @page { size: auto !important; }
+      body { background: #fff; }
+      .topbar, .skip-link, .button-row, .contact-links { display: none !important; }
+      header, .contact-section { background: #fff !important; color: #222 !important; }
+      .hero p, .hero .lead, .hero .title, .stat span, .contact-section p,
+      .contact-section h2, .hero h1 { color: #222 !important; }
+      section, .card { box-shadow: none !important; break-inside: avoid; }
     }
   </style>
 </head>
 <body>
-  <header>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="topbar">
     <div class="container">
-      <nav>
-        <div class="logo">bcwheeler.dev</div>
+      <nav aria-label="Primary">
+        <a class="logo" href="#top">bcwheeler<span>.dev</span></a>
         <div class="nav-links">
           <a href="#about">About</a>
-          <a href="#projects">Selected Work</a>
+          <a href="#career">Career Path</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
-          <a href="#certifications">Certifications</a>
+          <a href="#education">Education</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
+    </div>
+  </div>
 
+  <header id="top">
+    <div class="container">
       <div class="hero">
         <div>
-          <img
-            src="brandon_wheeler_pic.png"
-            alt="Photo of Brandon C. Wheeler"
-          />
+          <img src="brandon_wheeler_pic.png" alt="Photo of Brandon C. Wheeler" />
         </div>
         <div>
+          <p class="eyebrow">Systems Administration &middot; Infrastructure &middot; End-User Support</p>
           <h1>Brandon C. Wheeler</h1>
-          <h2>Junior System Administrator</h2>
-          <p>
-            I provide systems administration, infrastructure support,
-            troubleshooting, and technical operations support in higher education
-            and research environments.
+          <p class="title">Junior System Administrator &mdash; LSU Center for Computation &amp; Technology</p>
+          <p class="lead">
+            I keep research, academic, and administrative environments running &mdash;
+            from Linux and Windows servers, virtual machines, and backup platforms to
+            the desktops, labs, and applications people use every day.
           </p>
           <p>
-            My background includes Linux and Windows systems, virtualization,
-            backups, storage, documentation, and end-user support.
-          </p>
-          <p>
-            Based in Baton Rouge, LA. Focused on junior–mid systems
-            administration and infrastructure roles in higher education, research
-            computing, and enterprise IT.
+            Over more than a decade at LSU, I&rsquo;ve grown from hands-on desktop support
+            into systems and infrastructure work: building RHEL servers, integrating
+            authentication, supporting virtualization and storage, and writing the
+            documentation that helps teams recover faster.
           </p>
           <div class="button-row">
+            <a class="button" href="#projects">View Selected Projects</a>
             <a class="button secondary" href="#contact">Contact Me</a>
+            <!-- Optional: add your resume PDF to the repo, then uncomment:
+            <a class="button secondary" href="Brandon_Wheeler_Resume.pdf">Download Resume</a>
+            -->
           </div>
         </div>
+      </div>
+
+      <div class="stats" aria-label="Highlights">
+        <div class="stat"><strong>12+ years</strong><span>in IT support &amp; administration</span></div>
+        <div class="stat"><strong>Since 2014</strong><span>at LSU CCT</span></div>
+        <div class="stat"><strong>Linux &middot; Windows &middot; macOS</strong><span>supported day to day</span></div>
+        <div class="stat"><strong>Server to desktop</strong><span>end-to-end troubleshooting</span></div>
       </div>
     </div>
   </header>
 
-  <main class="container">
+  <main id="main" class="container">
+
+    <!-- ===================== ABOUT ===================== -->
     <section id="about">
-      <h3>About Me</h3>
-      <p>
-        I am a Junior System Administrator based in Baton Rouge, LA, supporting
-        technical operations, systems, and services for LSU CCT and ORED. My
-        work includes server support, patching, backups, documentation, research
-        support, and day-to-day troubleshooting for users and systems.
-      </p>
-      <p>
-        I enjoy building reliable solutions, solving technical problems, and
-        creating documentation that helps teams work more efficiently.
-      </p>
+      <div class="about-grid">
+        <div>
+          <div class="section-head">
+            <h2>About Me</h2>
+          </div>
+          <p>
+            I&rsquo;m a system administrator in Baton Rouge, LA, supporting faculty,
+            researchers, students, and staff at LSU&rsquo;s Center for Computation &amp;
+            Technology (CCT) and partner units in the Office of Research &amp; Economic
+            Development (ORED).
+          </p>
+          <p>
+            My work covers the full stack: RHEL and Windows servers, Active Directory and
+            SSSD integration, Hyper-V and VMware virtualization, backup and storage
+            platforms, web and database services, and the desktops, laptops, and labs
+            people rely on to teach and do research.
+          </p>
+          <p>
+            Starting in desktop support taught me that infrastructure only matters if it
+            works for the person in front of the computer. That still shapes how I work:
+            careful changes, clear documentation, and plain-language communication.
+          </p>
+        </div>
+        <ul class="focus-list" aria-label="Areas of focus">
+          <li><strong>Infrastructure:</strong> Linux &amp; Windows servers, clusters, and VMs</li>
+          <li><strong>Resilience:</strong> backup, storage, and recovery operations</li>
+          <li><strong>Support:</strong> desktops, laptops, labs, and specialized applications</li>
+          <li><strong>Operations:</strong> ticket queues, runbooks, inventory, and handoffs</li>
+          <li><strong>Looking ahead:</strong> system administration and infrastructure roles in higher education, research computing, and enterprise IT</li>
+        </ul>
+      </div>
     </section>
 
-    <section id="projects">
-      <h3>Selected Work</h3>
+    <!-- ===================== CAREER PATH ===================== -->
+    <section id="career">
+      <div class="section-head">
+        <h2>Career Path</h2>
+        <p>From customer service to help desk to systems administration.</p>
+      </div>
+      <ol class="timeline">
+        <li>
+          <span class="when">2010 &ndash; 2011</span>
+          <span class="role">Teller II</span>
+          <span class="org">Neighbors Federal Credit Union</span>
+          <p>Built a foundation in accuracy, accountability, and customer-focused service.</p>
+        </li>
+        <li>
+          <span class="when">2012</span>
+          <span class="role">IT Support Specialist</span>
+          <span class="org">Postlethwaite &amp; Netterville</span>
+          <p>Handled end-user support through Cherwell, created user accounts, prepared computers for imaging, and managed hardware inventory.</p>
+        </li>
+        <li>
+          <span class="when">2013</span>
+          <span class="role">Tier 1 &amp; 2 Desktop Support</span>
+          <span class="org">Sparkhound</span>
+          <p>Migrated users from Windows XP to Windows 7 and configured hardware and software for medical faculty and staff, including on-site field support.</p>
+        </li>
+        <li class="current">
+          <span class="when">2014 &ndash; Present</span>
+          <span class="role">Junior System Administrator</span>
+          <span class="org">Louisiana State University &mdash; Center for Computation &amp; Technology</span>
+          <p>Grew from user support into server, virtualization, backup, storage, and research-support work across CCT and partner LSU units.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section id="experience">
+      <div class="section-head">
+        <h2>Experience</h2>
+      </div>
+
+      <div class="job-head">
+        <h3>Junior System Administrator</h3>
+        <span class="job-dates">April 2014 &ndash; Present</span>
+      </div>
+      <p class="job-org">Louisiana State University &mdash; Center for Computation &amp; Technology (CCT), Baton Rouge, LA</p>
+
       <div class="cards">
         <div class="card">
-          <h4>Infrastructure & Systems Administration</h4>
+          <h3>Linux &amp; Windows Server Administration</h3>
           <ul>
-            <li>
-              Administer Linux (RHEL) and Windows Server hosts for research and
-              administrative workloads at LSU CCT/ORED.
-            </li>
-            <li>
-              Handle patching, monitoring, and troubleshooting for physical and
-              virtual servers, desktops, and laptops.
-            </li>
+            <li>Build and maintain RHEL 8/9 servers, including Active Directory and SSSD integration, access configuration, service management, patching, and logging.</li>
+            <li>Administer Windows Server hosts supporting research and administrative workloads.</li>
+            <li>Move end-of-life systems to supported platforms with planned, staged migrations.</li>
           </ul>
         </div>
 
         <div class="card">
-          <h4>Virtualization & Backup Operations</h4>
+          <h3>Virtualization</h3>
           <ul>
-            <li>
-              Support Hyper-V and VMware environments, including provisioning,
-              lifecycle operations, and performance troubleshooting.
-            </li>
-            <li>
-              Work on projects such as SCVMM database migrations to new SQL
-              Server instances and backup monitoring for critical systems.
-            </li>
+            <li>Manage Hyper-V and VMware vSphere virtual machines, including provisioning, maintenance, resource coordination, troubleshooting, and recovery.</li>
+            <li>Migrated the SCVMM database to a new SQL Server instance.</li>
+            <li>Evaluated Proxmox VE against Hyper-V and VMware to inform future platform decisions.</li>
           </ul>
         </div>
 
         <div class="card">
-          <h4>Documentation & Process Improvement</h4>
+          <h3>Backup, Storage &amp; Recovery</h3>
           <ul>
-            <li>
-              Create runbooks and procedures for recurring tasks such as
-              patching, backup checks, and common incident response.
-            </li>
-            <li>
-              Contribute to improvements around tools like Request Tracker by
-              documenting workflows and upgrade steps.
-            </li>
+            <li>Support Dell PowerProtect Data Manager, Avamar, Data Domain, PowerStore, SC-series, and QNAP storage platforms.</li>
+            <li>Investigate failures across hypervisors, backup systems, and storage; validate restores; and coordinate with vendor support.</li>
           </ul>
         </div>
 
         <div class="card">
-          <h4>Research & User Support</h4>
+          <h3>Web, Database &amp; Security Operations</h3>
           <ul>
-            <li>
-              Provide technical support for faculty, researchers, and students
-              using specialized systems, clusters, and applications.
-            </li>
-            <li>
-              Help users with access, environment setup, and troubleshooting so
-              they can focus on their research and teaching.
-            </li>
+            <li>Configure Linux infrastructure for Apache and PostgreSQL workloads and manage TLS certificate lifecycles.</li>
+            <li>Monitor system health, review alerts, apply security patches and hotfixes, and coordinate remediation.</li>
+            <li>Tighten access with SSH key-based logins and least-privilege sudo policies.</li>
           </ul>
+        </div>
+
+        <div class="card">
+          <h3>Desktop, Lab &amp; End-User Support</h3>
+          <ul>
+            <li>Troubleshoot Windows, Linux, and macOS systems across operating system, application, hardware, authentication, and connectivity layers.</li>
+            <li>Support teaching labs and XR/visualization spaces, including deployment, reimaging, hardware support, and lifecycle coordination.</li>
+            <li>Serve as the lead IT contact for a specialized administrative office.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Service Operations &amp; Documentation</h3>
+          <ul>
+            <li>Manage Request Tracker queues, prioritize work, and document incidents and resolutions.</li>
+            <li>Write runbooks and procedures for patching, backup checks, recovery, and common incidents.</li>
+            <li>Support inventory, procurement, and operational handoffs.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="earlier">
+        <h3>Earlier Roles</h3>
+        <div class="earlier-item">
+          <strong>Tier 1 &amp; 2 Desktop Support &mdash; Sparkhound</strong><span class="job-dates">Jan 2013 &ndash; Sep 2013</span>
+          <p>Supported Windows XP-to-Windows 7 migrations and provided field support for medical faculty and staff.</p>
+        </div>
+        <div class="earlier-item">
+          <strong>IT Support Specialist &mdash; Postlethwaite &amp; Netterville</strong><span class="job-dates">May 2012 &ndash; Dec 2012</span>
+          <p>Provided Cherwell-based end-user support, account creation, imaging prep, and hardware inventory management.</p>
         </div>
       </div>
     </section>
 
+    <!-- ===================== PROJECTS ===================== -->
+    <section id="projects">
+      <div class="section-head">
+        <h2>Selected Projects</h2>
+        <p>Representative work, described at a level that is safe to share publicly.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card project">
+          <h3>File Server Refresh: CentOS 7 to RHEL 9</h3>
+          <dl>
+            <dt>Challenge</dt>
+            <dd>A core departmental file server was running an end-of-life operating system and needed to move to a supported platform without long outages for researchers.</dd>
+            <dt>What I did</dt>
+            <dd>Planned the migration, staged large data transfers through intermediate storage with multiple rsync passes, and coordinated with the IT team to reduce competing load during critical copy windows.</dd>
+            <dt>Outcome</dt>
+            <dd>Moved the service to a supported RHEL 9 platform with minimal disruption, then monitored performance after cutover.</dd>
+          </dl>
+          <div class="tags">
+            <span class="tag">RHEL 9</span><span class="tag">rsync</span><span class="tag">Windows Server 2022</span><span class="tag">45Drives</span>
+          </div>
+        </article>
+
+        <article class="card project">
+          <h3>Backup Reliability: Dell PowerProtect &amp; Data Domain</h3>
+          <dl>
+            <dt>Challenge</dt>
+            <dd>Backups for key Hyper-V virtual machines were failing on the department&rsquo;s backup platform.</dd>
+            <dt>What I did</dt>
+            <dd>Diagnosed the failures across the backup appliance, Data Domain, and the hypervisor layer; worked with Dell support on bug fixes; restarted affected components; and validated restores.</dd>
+            <dt>Outcome</dt>
+            <dd>Improved backup reliability for critical systems and preserved vendor case records for audit and continuity.</dd>
+          </dl>
+          <div class="tags">
+            <span class="tag">PowerProtect Data Manager</span><span class="tag">DP4400</span><span class="tag">Data Domain</span><span class="tag">Hyper-V</span>
+          </div>
+        </article>
+
+        <article class="card project">
+          <h3>Directory-Integrated RHEL Server Builds</h3>
+          <dl>
+            <dt>Challenge</dt>
+            <dd>New Linux services needed consistent builds that worked with university identity systems and were ready for production support.</dd>
+            <dt>What I did</dt>
+            <dd>Built RHEL 8/9 servers with Active Directory and SSSD integration, scoped access, Apache and PostgreSQL services, and TLS certificate management, then documented each build for handoff.</dd>
+            <dt>Outcome</dt>
+            <dd>Delivered repeatable, supportable servers that others could maintain using the documentation.</dd>
+          </dl>
+          <div class="tags">
+            <span class="tag">RHEL 8/9</span><span class="tag">Active Directory</span><span class="tag">SSSD</span><span class="tag">Apache</span><span class="tag">PostgreSQL</span><span class="tag">TLS</span>
+          </div>
+        </article>
+
+        <article class="card project">
+          <h3>Hyper-V Linux Recovery Runbook</h3>
+          <dl>
+            <dt>Challenge</dt>
+            <dd>Linux VM boot failures after migrations or updates were often solved case by case, with key knowledge living in individual notes.</dd>
+            <dt>What I did</dt>
+            <dd>Wrote a recovery runbook for Ubuntu and RHEL/CentOS guests on Generation 1 and 2 VMs, covering legacy and modern GRUB, Secure Boot pre-checks, common failure modes, and VMware-to-Hyper-V migration issues.</dd>
+            <dt>Outcome</dt>
+            <dd>Turned one-off fixes into a repeatable team playbook for faster, lower-risk recovery.</dd>
+          </dl>
+          <div class="tags">
+            <span class="tag">Hyper-V</span><span class="tag">GRUB</span><span class="tag">UEFI / Secure Boot</span><span class="tag">Documentation</span>
+          </div>
+        </article>
+
+        <article class="card project">
+          <h3>Media &amp; Research Lab Support</h3>
+          <dl>
+            <dt>Challenge</dt>
+            <dd>Digital media teaching labs and XR/visualization spaces depend on high-end workstations, specialized software, and reliable networking.</dd>
+            <dt>What I did</dt>
+            <dd>Supported Alienware, Dell Precision, MSI, and Lenovo systems; sourced hardware; arranged network port activation; troubleshot Wi-Fi; deployed Houdini; and managed FARO SCENE licensing for classes.</dd>
+            <dt>Outcome</dt>
+            <dd>Handled the technical details so faculty and students could focus on coursework and projects.</dd>
+          </dl>
+          <div class="tags">
+            <span class="tag">Workstations</span><span class="tag">Software Deployment</span><span class="tag">Licensing</span><span class="tag">Networking</span>
+          </div>
+        </article>
+
+        <article class="card project">
+          <h3>Device Lifecycle &amp; Help Desk Process</h3>
+          <dl>
+            <dt>Challenge</dt>
+            <dd>Imaging, backup, equipment swaps, and surplus work needed to be consistent, traceable, and compliant with policy.</dd>
+            <dt>What I did</dt>
+            <dd>Helped standardize imaging and backup USB drives, status labels such as sanitized or ready for surplus, shared documentation, and asset inventory records.</dd>
+            <dt>Outcome</dt>
+            <dd>Reduced ad hoc work and made equipment easier to track from deployment through surplus.</dd>
+          </dl>
+          <div class="tags">
+            <span class="tag">Imaging</span><span class="tag">Asset Inventory</span><span class="tag">Request Tracker</span><span class="tag">Process Design</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== APPROACH ===================== -->
+    <section id="approach" class="approach">
+      <div class="section-head">
+        <h2>How I Work</h2>
+        <p>The habits I bring to every change, migration, and support request.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3 data-step="1">Test on one before many</h3>
+          <p>Validate changes on an isolated, reversible test system before rolling them out more widely.</p>
+        </div>
+        <div class="card">
+          <h3 data-step="2">Check dependencies before removing anything</h3>
+          <p>Inventory what relies on a system and use reversible shutdown trials before retiring it.</p>
+        </div>
+        <div class="card">
+          <h3 data-step="3">Write it down</h3>
+          <p>Keep runbooks, ticket notes, and handoff documents current so the next person can pick up the work.</p>
+        </div>
+        <div class="card">
+          <h3 data-step="4">Explain it plainly</h3>
+          <p>Give faculty, staff, and students clear, nontechnical updates about what is changing and what they need to do.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SKILLS ===================== -->
     <section id="skills">
-      <h3>Skills</h3>
-      <p>Technologies and areas I work with regularly:</p>
-      <div class="tags">
-        <span class="tag">Linux</span>
-        <span class="tag">Windows Server</span>
-        <span class="tag">Active Directory</span>
-        <span class="tag">Hyper-V</span>
-        <span class="tag">VMware</span>
-        <span class="tag">Backups</span>
-        <span class="tag">Storage</span>
-        <span class="tag">Bash</span>
-        <span class="tag">Python</span>
-        <span class="tag">Ansible</span>
-        <span class="tag">PowerShell</span>
-        <span class="tag">Technical Documentation</span>
+      <div class="section-head">
+        <h2>Skills &amp; Tools</h2>
+        <p>Technologies I use regularly, grouped by area.</p>
+      </div>
+      <div class="skill-groups">
+        <div>
+          <h3>Operating Systems</h3>
+          <div class="tags">
+            <span class="tag">RHEL 8/9</span><span class="tag">CentOS</span><span class="tag">Ubuntu</span>
+            <span class="tag">Windows Server</span><span class="tag">Windows 10/11</span><span class="tag">macOS</span>
+          </div>
+        </div>
+        <div>
+          <h3>Identity &amp; Access</h3>
+          <div class="tags">
+            <span class="tag">Red Hat IdM (FreeIPA)</span><span class="tag">Active Directory</span><span class="tag">SSSD</span><span class="tag">SSH Keys</span>
+            <span class="tag">sudo Policy</span><span class="tag">Local Account Policy</span>
+          </div>
+        </div>
+        <div>
+          <h3>Virtualization</h3>
+          <div class="tags">
+            <span class="tag">Hyper-V</span><span class="tag">SCVMM</span><span class="tag">VMware vSphere</span>
+            <span class="tag">Proxmox VE (evaluation)</span>
+          </div>
+        </div>
+        <div>
+          <h3>Backup &amp; Storage</h3>
+          <div class="tags">
+            <span class="tag">PowerProtect Data Manager</span><span class="tag">Avamar</span><span class="tag">Data Domain</span>
+            <span class="tag">PowerStore</span><span class="tag">SC5020</span><span class="tag">QNAP</span><span class="tag">45Drives</span>
+          </div>
+        </div>
+        <div>
+          <h3>Web, Database &amp; Services</h3>
+          <div class="tags">
+            <span class="tag">Apache</span><span class="tag">Nginx</span><span class="tag">PostgreSQL</span>
+            <span class="tag">Certbot / TLS</span><span class="tag">WordPress</span>
+          </div>
+        </div>
+        <div>
+          <h3>Automation &amp; Scripting</h3>
+          <div class="tags">
+            <span class="tag">Bash</span><span class="tag">PowerShell</span><span class="tag">Python</span>
+            <span class="tag">Ansible</span><span class="tag">rsync</span>
+          </div>
+        </div>
+        <div>
+          <h3>Monitoring &amp; Operations</h3>
+          <div class="tags">
+            <span class="tag">Nagios</span><span class="tag">Request Tracker</span><span class="tag">Patch Management</span>
+            <span class="tag">Incident Documentation</span>
+          </div>
+        </div>
+        <div>
+          <h3>Endpoint &amp; Desktop</h3>
+          <div class="tags">
+            <span class="tag">Imaging &amp; Deployment</span><span class="tag">Hardware Lifecycle</span>
+            <span class="tag">Lab Support</span><span class="tag">Software Licensing</span>
+          </div>
+        </div>
+        <div>
+          <h3>Boot &amp; Firmware</h3>
+          <div class="tags">
+            <span class="tag">UEFI / BIOS</span><span class="tag">GRUB</span><span class="tag">Secure Boot</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="certifications">
-      <h3>Certifications & Training</h3>
-      <ul>
-        <li>Preparing for Red Hat Certified System Administrator (RHCSA)</li>
-        <!-- Add more items as you complete them -->
+    <!-- ===================== EDUCATION ===================== -->
+    <section id="education">
+      <div class="section-head">
+        <h2>Education &amp; Certifications</h2>
+      </div>
+      <ul class="edu-list">
+        <li>
+          <strong>Red Hat Certified System Administrator (RHCSA) <span class="status">In progress</span></strong>
+          <span>Preparing for the RHCSA exam</span>
+        </li>
+        <li>
+          <strong>Bachelor&rsquo;s Degree, Information Systems and Cybersecurity</strong>
+          <span>ITT Technical Institute, Baton Rouge, LA &middot; 2012 &ndash; 2014</span>
+        </li>
+        <li>
+          <strong>Associate of Science, Computer Network Systems</strong>
+          <span>ITT Technical Institute, Baton Rouge, LA &middot; 2010 &ndash; 2012</span>
+        </li>
+        <!-- Add certifications here as you earn them -->
       </ul>
     </section>
 
-    <section id="contact">
-      <h3>Contact</h3>
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="contact-section">
+      <h2>Let&rsquo;s Connect</h2>
       <p>
-        <strong>Email:</strong>
-        <a href="mailto:branwheeler85@gmail.com">branwheeler85@gmail.com</a>
+        I&rsquo;m interested in system administration and infrastructure opportunities in
+        higher education, research computing, and enterprise IT, and I&rsquo;m always happy to
+        talk shop with other sysadmins.
       </p>
-      <p>
-        <strong>LinkedIn:</strong>
-        <a
-          href="https://www.linkedin.com/in/brandon-wheeler-b340a6273/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          linkedin.com/in/brandon-wheeler-b340a6273
-        </a>
-      </p>
-      <p>
-        <strong>Website:</strong>
-        <a href="https://bcwheeler.dev">bcwheeler.dev</a>
-      </p>
+      <div class="contact-links">
+        <a class="button" href="mailto:branwheeler85@gmail.com">Email Me</a>
+        <a class="button secondary" href="https://www.linkedin.com/in/brandon-wheeler-b340a6273/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="button secondary" href="https://github.com/bwheeler2" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
     </section>
   </main>
 
   <footer>
-    © 2026 Brandon C. Wheeler | bcwheeler.dev — Systems Administration & Infrastructure Support
+    &copy; <span id="year">2026</span> Brandon C. Wheeler &middot; bcwheeler.dev &mdash; Systems Administration &amp; Infrastructure Support
   </footer>
+
+  <script>
+    // Keep the footer year current
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Highlight the nav link for the section currently on screen
+    (function () {
+      var links = document.querySelectorAll(".nav-links a");
+      if (!("IntersectionObserver" in window)) return;
+      var map = {};
+      links.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && map[entry.target.id]) {
+            links.forEach(function (a) { a.classList.remove("active"); });
+            map[entry.target.id].classList.add("active");
+          }
+        });
+      }, { rootMargin: "-40% 0px -55% 0px" });
+      document.querySelectorAll("main section[id]").forEach(function (s) { observer.observe(s); });
+    })();
+  </script>
 </body>
 </html>
