@@ -426,6 +426,22 @@
     .contact-section p { color: rgba(255, 255, 255, 0.88); }
     .contact-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
 
+    .freelance {
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .freelance h3 { color: var(--gold); font-size: 1.15rem; margin: 0 0 8px; }
+    .freelance ul {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px 24px;
+      margin: 0 0 16px;
+      padding-left: 20px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    @media screen and (max-width: 760px) { .freelance ul { grid-template-columns: 1fr; } }
+
     footer {
       text-align: center;
       padding: 18px 0 22px;
@@ -462,7 +478,7 @@
       .topbar, .skip-link, .button-row, .contact-links { display: none !important; }
       header, .contact-section { background: #fff !important; color: #222 !important; }
       .hero p, .hero .lead, .hero .title, .stat span, .contact-section p,
-      .contact-section h2, .hero h1 { color: #222 !important; }
+      .contact-section h2, .hero h1, .freelance h3, .freelance ul { color: #222 !important; }
       section, .card { box-shadow: none !important; break-inside: avoid; }
     }
   </style>
@@ -910,6 +926,24 @@
         <a class="button" href="mailto:branwheeler85@gmail.com">Email Me</a>
         <a class="button secondary" href="https://www.linkedin.com/in/brandon-wheeler-b340a6273/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a class="button secondary" href="https://github.com/bwheeler2" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+
+      <!-- ===================== FREELANCE ===================== -->
+      <div class="freelance" id="freelance">
+        <h3>Open to Freelance IT Work</h3>
+        <p>
+          I take on freelance IT projects for small businesses, nonprofits, home offices, and
+          individuals in the Baton Rouge area, with remote help available. Typical work includes:
+        </p>
+        <ul>
+          <li>Computer setup, upgrades, and troubleshooting</li>
+          <li>Small office network and Wi-Fi setup</li>
+          <li>Backup setup and data recovery planning</li>
+          <li>Linux and Windows server setup and maintenance</li>
+          <li>Website hosting, domains, and SSL certificates</li>
+          <li>Security checkups, updates, and account cleanup</li>
+        </ul>
+        <a class="button" href="mailto:branwheeler85@gmail.com?subject=Freelance%20IT%20Inquiry">Request Freelance Help</a>
       </div>
     </section>
   </main>
